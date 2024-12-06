@@ -39,15 +39,15 @@ jobs:
 
       # Step 6: Run App
       - name: Run App
-        run: npm preview
+        run: npm run preview
 
       # Step 7: Run tests
       - name: Run Component tests
-        run: npm test-ct
+        run: npm run test-ct
 
       # Step 8: Run tests
       - name: Run E2E tests
-        run: npm test
+        run: npm run test
 
       # Step 9: Deploy to S3
       - name: Deploy to S3
