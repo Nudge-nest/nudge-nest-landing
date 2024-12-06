@@ -37,19 +37,7 @@ jobs:
           VITE_APP_SIGNUP_URL: ${{ secrets.SIGNUP_URL }}
         run: npm run build
 
-      # Step 6: Run App
-      - name: Run App
-        run: npm run preview
-
-      # Step 7: Run tests
-      - name: Run Component tests
-        run: npm run test-ct
-
-      # Step 8: Run tests
-      - name: Run E2E tests
-        run: npm run test
-
-      # Step 9: Deploy to S3
+      # Step 6: Deploy to S3
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:
@@ -60,3 +48,11 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_S3_BUCKET: ${{ secrets.S3_BUCKET }}
           SOURCE_DIR: ${{ secrets.SOURCE_DIR }}
+          
+      # Step 7: Run tests
+      - name: Run Component tests
+        run: npm run test-ct
+
+      # Step 8: Run tests
+      - name: Run E2E tests
+        run: npm run test          
