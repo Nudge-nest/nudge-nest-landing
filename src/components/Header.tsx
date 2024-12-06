@@ -1,7 +1,7 @@
 import logo from '../assets/nudge-nest-icon2-v1.webp';
 import { SmallBodyText, SmallBodyTextBold } from './Typography';
 
-const homeUrl = `${import.meta.env.VITE_APP_HOST}:${import.meta.env.VITE_APP_PORT}`;
+const homeUrl = `${import.meta.env.VITE_APP_HOST}`;
 const contactUrl = `${import.meta.env.VITE_APP_CONTACT_URL}`;
 const listBaseStyle = 'mx-4 cursor-pointer';
 

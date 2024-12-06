@@ -31,10 +31,10 @@ jobs:
       # Step 5: Build the React app
       - name: Build React app
         env:
-          REACT_APP_CONTEXT: ${{ secrets.REACT_APP_CONTEXT }}
-          REACT_APP_VERSION: ${{ secrets.REACT_APP_VERSION }}
-          REACT_APP_BACKEND_HOST: ${{ secrets.REACT_APP_BACKEND_HOST }}
-          REACT_APP_SAMPLE_AUTH_TOKEN: ${{ secrets.REACT_APP_SAMPLE_AUTH_TOKEN }}
+          VITE_APP_HOST: ${{ secrets.HOST }}
+          VITE_APP_CONTACT_URL: ${{ secrets.CONTACT_URL }}
+          VITE_APP_FEATURES_URL: ${{ secrets.FEATURES_URL }}
+          VITE_APP_SIGNUP_URL: ${{ secrets.SIGNUP_URL }}
         run: npm run build
 
       # Step 6: Deploy to S3
