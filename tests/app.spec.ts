@@ -1,10 +1,9 @@
 import { test, expect } from '@playwright/test';
 
-const homeUrl = `http://localhost:5173/`;
 
 test.describe('App Test', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto(homeUrl);
+        await page.goto('/');
     });
 
     test('signup for early access url works', async ({ page }) => {
@@ -16,7 +15,7 @@ test.describe('App Test', () => {
         ]);
         await popup.waitForURL(/docs\.google\.com\/forms/i);
         await expect(popup).toHaveURL(/docs\.google\.com\/forms/i);
-        await expect(popup).toHaveTitle(/Early Access Signup/);
+        await expect(popup).toHaveTitle(/Sign Up for Early Access to Nudge-Nest/);
     });
 
     test('submit feature request url works', async ({ page }) => {
@@ -28,7 +27,7 @@ test.describe('App Test', () => {
         ]);
         await popup.waitForURL(/docs\.google\.com\/forms/i);
         await expect(popup).toHaveURL(/docs\.google\.com\/forms/i);
-        await expect(popup).toHaveTitle(/Feature Request/);
+        await expect(popup).toHaveTitle(/Feature Request Form for Nudge-Nest/);
     });
 
     test('contact url works', async ({ page }) => {
