@@ -25,8 +25,8 @@ jobs:
         run: npm install
 
       # Step 4: Run tests
-      - name: Run tests
-        run: npm test
+      - name: Install Playwright
+        run: npx playwright install
 
       # Step 5: Build the React app
       - name: Build React app
@@ -37,7 +37,19 @@ jobs:
           VITE_APP_SIGNUP_URL: ${{ secrets.SIGNUP_URL }}
         run: npm run build
 
-      # Step 6: Deploy to S3
+      # Step 6: Run App
+      - name: Run App
+        run: npm preview
+
+      # Step 7: Run tests
+      - name: Run Component tests
+        run: npm test-ct
+
+      # Step 8: Run tests
+      - name: Run E2E tests
+        run: npm test
+
+      # Step 9: Deploy to S3
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:
