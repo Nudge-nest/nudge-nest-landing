@@ -1,0 +1,50 @@
+name: CI/CD Pipeline for Quiz App
+
+on:
+  push:
+    branches:
+      - test
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Run tests
+      - name: Run tests
+        run: npm test
+
+      # Step 5: Build the React app
+      - name: Build React app
+        env:
+          REACT_APP_CONTEXT: ${{ secrets.REACT_APP_CONTEXT }}
+          REACT_APP_VERSION: ${{ secrets.REACT_APP_VERSION }}
+          REACT_APP_BACKEND_HOST: ${{ secrets.REACT_APP_BACKEND_HOST }}
+          REACT_APP_SAMPLE_AUTH_TOKEN: ${{ secrets.REACT_APP_SAMPLE_AUTH_TOKEN }}
+        run: npm run build
+
+      # Step 6: Deploy to S3
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --follow-symlinks --delete
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_S3_BUCKET: ${{ secrets.S3_BUCKET }}
+          SOURCE_DIR: ${{ secrets.SOURCE_DIR }}
