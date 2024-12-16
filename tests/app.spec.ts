@@ -1,9 +1,13 @@
 import { test, expect } from '@playwright/test';
 
-
 test.describe('App Test', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/');
+    });
+
+    test('media/video section is visible', async ({ page }) => {
+        await expect(page).toHaveTitle(/Nudge-nest/);
+        await expect(page.getByLabel('media-video')).toBeVisible();
     });
 
     test('signup for early access url works', async ({ page }) => {

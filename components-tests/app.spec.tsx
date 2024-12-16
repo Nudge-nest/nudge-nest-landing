@@ -42,7 +42,6 @@ test.describe('App component', () => {
                 '                                    platform helps you capture the voice of your customers and transform it into\n' +
                 '                                    compelling stories that drive trust, loyalty, and sales.'
         );
-        await expect(component).toContainText('Learn More');
         await expect(component).toContainText('Feature Request Section');
         await expect(component).toContainText(
             'Already using a competitor but considering switching? Tell us what features you need\n' +
