@@ -14,7 +14,7 @@ const featuresUrl = `${import.meta.env.VITE_APP_FEATURES_URL}`;
 
 const LandingPage = () => {
     return (
-        <div className="grid grid-rows-3 md:grid-rows-[auto_auto_auto]">
+        <div className="grid grid-rows-4 md:grid-rows-[auto_auto_auto_auto]">
             <PageSection height="large" name="hero">
                 <div className={`col-span-full w-full md:w-4/5 mx-auto flex flex-col gap-y-8 justify-center`}>
                     <LargerHeaderTextBoldItalic>
@@ -33,6 +33,17 @@ const LandingPage = () => {
                         </a>
                     </Button>
                 </div>
+            </PageSection>
+            <PageSection height="large" name="media-video">
+                <video
+                   className={'col-span-full md:w-4/5 h-full mx-auto flex flex-col items-center'}
+                   autoPlay
+                   muted
+                   playsInline
+                >
+                    <source type="video/webm"
+                            src="https://nudge-nest-media.s3.eu-north-1.amazonaws.com/nudge_nest_landing_01_HD.webm"/>
+                </video>
             </PageSection>
             <PageSection height="medium" name="features">
                 <div className={`col-span-full md:w-4/5 mx-auto flex flex-col gap-y-10 justify-center items-center`}>
@@ -81,11 +92,11 @@ const LandingPage = () => {
                                     platform helps you capture the voice of your customers and transform it into
                                     compelling stories that drive trust, loyalty, and sales.
                                 </MediumBodyText>
-                                <LinkButton>
+                                {/*<LinkButton>
                                     <SmallBodyText className={`!text-[color:var(--color-main)] !font-[500]`}>
                                         Learn More
                                     </SmallBodyText>
-                                </LinkButton>
+                                </LinkButton>*/}
                             </div>
                         </div>
                         <div className={`md:col-span-6`}>
